@@ -1,19 +1,30 @@
 import { Component, signal } from '@angular/core';
 import axios from 'axios';
 import { flightModel } from '../../models/flightModel';
+import { RouterLink } from "@angular/router";
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import { Utils } from '../utils';
+import {MatIconModule} from '@angular/material/icon'; 
+
 
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterLink, MatButtonModule, MatCardModule, MatIconModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
+  
 })
 export class Home {
   flights = signal<flightModel[]>([])
 
-  constructor(){
-    axios.get('https://flight.pequla.com/api/flight/list?type=departure')
-    .then(rsp=>this.flights.set(rsp.data))
+  constructor(public utils: Utils) {
+
+    axios.get<flightModel[]>('https://flight.pequla.com/api/flight/list?type=departure')
+    .then(rsp=>{
+      const sorted = rsp.data.sort((f1, f2) => new Date(f1.scheduledAt).getTime() - new Date(f2.scheduledAt).getTime());
+      this.flights.set(sorted);
+    });
   }
 }

@@ -1,0 +1,20 @@
+.flight-card{
+    width: 240px;
+}
+.card-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;   
+}
+.loading{
+    text-align: center;
+    font: bold;
+    width: 50%;
+    margin: auto;
+}
+.loading-gif{
+    width: 80px;
+    margin: auto;
+    
+}

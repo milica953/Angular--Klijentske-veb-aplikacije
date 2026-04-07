@@ -1,0 +1,9 @@
+@if (flight()) {
+    <ul>
+        <li>ID: {{flight()?.id}}</li>
+        <li>Destination: {{flight()?.destination}}</li>
+        <li>Scheduled at: {{flight()?.scheduledAt}}</li>
+        <li>PLane Model: {{flight()?.plane}}</li>
+        <li>Terminal: {{flight()?.terminal}}</li>
+    </ul>
+}
