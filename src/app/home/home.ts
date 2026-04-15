@@ -20,6 +20,7 @@ export class Home {
   flights = signal<flightModel[]>([])
 
   constructor(public utils: Utils) {
+    localStorage.setItem('time',JSON.stringify(new Date().toISOString()));
 
     axios.get<flightModel[]>('https://flight.pequla.com/api/flight/list?type=departure')
     .then(rsp=>{

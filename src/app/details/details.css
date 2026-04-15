@@ -1,0 +1,33 @@
+.card-wrapper{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.content-info-image-card{
+    width: 50%;
+    height: auto;
+}
+.content-info-image-card:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+.content-info-card{
+    width: 100%;
+    height: auto;
+    
+}
+.map-card{
+    max-width: 100%;
+    height: auto;
+}
+.map-card:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+.content-info-card:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
