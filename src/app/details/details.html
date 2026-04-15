@@ -18,9 +18,19 @@
                     <mat-icon matListItemIcon>bookmark</mat-icon>
                     <div matListItemTitle>Terminal</div>
                     <div matListItemLine>{{flight()?.terminal}}</div>
+                    
                 </mat-list-item>
             </mat-list>
         </mat-card-content>
+        @if (authService.getActiveUser()) {
+        <mat-card-actions>
+            <a [routerLink]="`/details/${flight()?.id}/booking`" matButton>
+                <mat-icon fontIcon="airplane_ticket" /> book now
+            </a>
+            
+
+            </mat-card-actions>
+    }
     </mat-card>
 
     <mat-card class="content-info-image-card">

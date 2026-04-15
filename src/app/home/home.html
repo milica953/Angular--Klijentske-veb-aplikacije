@@ -16,6 +16,11 @@
                 <mat-icon fontIcon="description" />details
             </a>
 
+            @if (authService.getActiveUser()) {
+            <a [routerLink]="`/details/${f.id}/booking`" matButton>
+                <mat-icon fontIcon="airplane_ticket" /> book now
+            </a>
+            }
 
         </mat-card-actions>
     </mat-card>

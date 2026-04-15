@@ -4,13 +4,13 @@ const ACTIVE = 'active'
 
 export class AuthService {
     static getUsers(): UserModel[] {
-        const baseUser: UserModel = {
+        const baseUser: UserModel = { 
             email: 'user@example.com',
             password: 'user123',
             destination: 'Zagreb',
             firstName: 'Example',
             lastName: 'User',
-            phone: '0653093267',
+            phone: '0653093261',
             address: 'Danijelova 32',
             orders: []
         }
@@ -33,5 +33,32 @@ export class AuthService {
 
         return false
     }
+    static getActiveUser(): UserModel | null {
+        const users = this.getUsers()
+        for (let u of users) {
+            if (u.email === localStorage.getItem(ACTIVE)) {
+                return u
+            }
+        }
 
+        return null
+    }
+    
+    static logout() {
+        localStorage.removeItem(ACTIVE)
+    }
+
+     static updateActiveUser(newUserData: UserModel) {
+        const users = this.getUsers()
+        for (let u of users) {
+            if (u.email === localStorage.getItem(ACTIVE)) {
+                u.firstName = newUserData.firstName
+                u.lastName = newUserData.lastName
+                u.address = newUserData.address
+                u.phone = newUserData.phone
+                u.destination = newUserData.destination
+            }
+        }
+        localStorage.setItem(USERS, JSON.stringify(users))
+    }
 }

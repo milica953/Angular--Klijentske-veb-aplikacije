@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Utils } from '../utils';
 import {MatIconModule} from '@angular/material/icon'; 
+import { AuthService } from '../services/authService';
 
 
 
@@ -17,6 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
   
 })
 export class Home {
+  
+  public authService = AuthService
   flights = signal<flightModel[]>([])
 
   constructor(public utils: Utils) {
