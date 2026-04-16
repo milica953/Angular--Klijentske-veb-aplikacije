@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/authService';
+import { Alert } from '../alerts';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,7 @@ export class Login {
       this.router.navigate(['/'])
       return
     }
-    alert("invalid password or emial")
+    Alert.loginEror('invalid password or emial');
 
   }
 }

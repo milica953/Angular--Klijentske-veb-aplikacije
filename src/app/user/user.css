@@ -1,3 +1,10 @@
-.full-width{
-    width: 100%;
+.user-wrapper{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+}
+.user-card{
+    width: 460px;
 }
