@@ -15,6 +15,11 @@
         <button matButton (click)="Dologout()">
             <mat-icon fontIcon="logout"/> Logout
         </button>
+    
+         <a routerLink="/cart" matButton>
+            <mat-icon fontIcon="shopping_cart"/> cart
+        </a>
+
     }
     @else {
         <a routerLink="/login" matButton>
