@@ -33,3 +33,13 @@
     background: var(--mat-sys-primary) !important;
     color: var(--mat-sys-on-primary) !important;
 }
+.flex-wrapper{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+}
+.flex-card {
+    max-width: 460px;
+}
