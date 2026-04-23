@@ -6,7 +6,7 @@ const ACTIVE = 'active'
 
 export class AuthService {
     static getUsers(): UserModel[] {
-        const baseUser: UserModel = { 
+        const baseUser: UserModel = {
             email: 'user@example.com',
             password: 'user123',
             destination: 'Zagreb',
@@ -45,12 +45,12 @@ export class AuthService {
 
         return null
     }
-    
+
     static logout() {
         localStorage.removeItem(ACTIVE)
     }
 
-     static updateActiveUser(newUserData: UserModel) {
+    static updateActiveUser(newUserData: UserModel) {
         const users = this.getUsers()
         for (let u of users) {
             if (u.email === localStorage.getItem(ACTIVE)) {
@@ -64,8 +64,8 @@ export class AuthService {
         localStorage.setItem(USERS, JSON.stringify(users))
     }
 
-    static updatePassword(newPassword: string){
-         const users = this.getUsers()
+    static updatePassword(newPassword: string) {
+        const users = this.getUsers()
         for (let u of users) {
             if (u.email === localStorage.getItem(ACTIVE)) {
                 u.password = newPassword
@@ -73,7 +73,7 @@ export class AuthService {
         }
     }
 
-      static createOrder(order: Partial<OrderModel>, flight: flightModel) {
+    static createOrder(order: Partial<OrderModel>, flight: flightModel) {
         order.state = 'w'
         order.flightId = flight.id
         order.flightNumber = flight.flightNumber
@@ -90,7 +90,7 @@ export class AuthService {
         localStorage.setItem(USERS, JSON.stringify(users))
     }
 
-     static getOrdersByState(state: 'w' | 'p' | 'c') {
+    static getOrdersByState(state: 'w' | 'p' | 'c') {
         const users = this.getUsers()
         for (let u of users) {
             if (u.email === localStorage.getItem(ACTIVE)) {
@@ -99,6 +99,17 @@ export class AuthService {
         }
 
         return []
+    }
+
+    static removeOrder(createdAt: string) {
+        const users = this.getUsers()
+        for (let u of users) {
+            if (u.email === localStorage.getItem(ACTIVE)) {
+                u.orders = u.orders.filter((o) => o.createdAt !== createdAt)
+            }
+        }
+        localStorage.setItem(USERS, JSON.stringify(users))
+
     }
 
     static cancelOrder(createdAt: string) {
@@ -127,7 +138,7 @@ export class AuthService {
                 }
             }
         }
-        
+
         localStorage.setItem(USERS, JSON.stringify(users))
     }
 
