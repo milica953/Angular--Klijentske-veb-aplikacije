@@ -1,13 +1,29 @@
 mat-toolbar {
     display: flex;
     justify-content: space-between;
-    
 }
-.specer{
+
+.spacer {
     flex: 1 1 auto;
 }
-.wrapper{
+
+.wrapper {
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5px;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+@media screen and (max-width: 640px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
 }

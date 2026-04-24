@@ -7,3 +7,44 @@
     justify-content: center;
     gap: 10px;   
 }
+
+.card-content {
+    margin-top: 10px;
+}
+
+mat-form-field {
+    width: 260px;
+}
+
+mat-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+mat-card-content {
+    flex-grow: 1;
+}
+
+mat-card-actions {
+    margin-top: auto;
+}
+
+@media screen and (max-width: 640px) {
+    .gap-10 {
+        gap: 0px;
+    }
+
+    .flight-card {
+        min-width: 240px;
+        max-width: 460px;
+        width: auto;
+        height: auto;
+    }
+
+    mat-form-field {
+        min-width: 300px;
+        max-width: 460px;
+        width: 100%;
+    }
+}
