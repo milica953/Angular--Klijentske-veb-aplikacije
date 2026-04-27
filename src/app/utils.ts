@@ -6,6 +6,11 @@ import { DataService } from './services/dataService';
 @Injectable({
   providedIn: 'root',
 })
+
+/*
+  @Injectable u Angularu znači da je klasa spremna da bude ubacena (injectovana) u druge delove aplikacije, najčešće u komponente ili druge servise.
+  Kada napišeš @Injectable({ providedIn: 'root' }), kažeš Angularu da napravi jednu globalnu instancu tog servisa i da je deli kroz celu aplikaciju.
+*/
 export class Utils {
   formatDate(iso: string) {
     return new Date(iso).toLocaleString('sr-RS', {
@@ -18,7 +23,7 @@ export class Utils {
     })
   }
 
-  getImageUrl(flight: flightModel){
+  getImageUrl(flight: flightModel) {
     const fileName = flight.destination.split('')[0].toLowerCase()
     return `https://img.pequla.com/destination/$(fileName}.jpg`
   }
@@ -30,3 +35,14 @@ export class Utils {
   }
 
 }
+/*
+  API URL → environment
+  API pozivi → service
+  user/session → AuthService
+  prikaz → component
+  pomoćne funkcije → utils
+“Da li ovo treba svuda?” → core
+“Da li je vezano za jedan feature?” → features
+“Da li je samo helper funkcija?” → utils
+“Da li prikazujem UI?” → component
+*/ 

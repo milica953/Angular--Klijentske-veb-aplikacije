@@ -19,3 +19,14 @@ export const routes: Routes = [
     {path: 'singup', component: Signup}
 
 ];
+// Rute definišu koja komponenta se prikazuje za koji URL.
+// kad odem na /about
+// prikaži AboutComponent u <router-outlet>
+// odnosno
+//korisnik ode na /about
+// Angular pogleda routes
+// nađe odgovarajući path
+// ubaci tu komponentu u:
+// <router-outlet></router-outlet>
+// klik bez logike → routerLink
+// klik + logika → navigate()

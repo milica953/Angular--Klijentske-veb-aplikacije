@@ -17,6 +17,7 @@ import { Alert } from '../alerts';
   templateUrl: './singup.html',
   styleUrl: './singup.css',
 })
+// Partial<T> --> znači: uzme sva polja iz T i doda ? (optional)
 export class Signup {
   user: Partial<UserModel> = {
     email: '',
@@ -30,11 +31,33 @@ export class Signup {
 
   repeat: string = ''
   destinations = signal<string[]>([])
+  /*
+  Signal je jednostavan, ugrađen Angular reaktivni state koji automatski ažurira UI kada se vrednost promeni.
+  BehaviorSubject je RxJS stream koji drži trenutnu vrednost i zahteva subscribe da bi se pratile promene.
+  NgRx je centralizovani state management sistem za velike aplikacije koji organizuje state kroz akcije, reducer-e i selektore.
+  */ 
 
   constructor(public router: Router) {
     FlightService.getDestinations()
       .then(rsp => this.destinations.set(rsp.data))
   }
+  /*
+  .then(...) znači: “kad async operacija završi, uradi ovo” (najčešće HTTP poziv).
+  rsp je skraćenica za response (odgovor sa servera) — to je objekat koji dobiješ nazad iz API-ja.
+  => (strelica) je arrow function — skraćena funkcija koja prima rsp i izvršava kod u jednoj liniji.
+  this označava trenutnu instancu klase (npr. Angular komponentu), pa this.destinations znači “destinations u ovoj komponenti”.
+  .set(rsp.data) uzima podatke iz servera i upisuje ih u signal destinations. 
+  ###################################################################################
+  Lambda funkcije (arrow function =>) -> (a, b) => a + b “uzmi a i b i vrati zbir” jos jedan primer 
+  umesto: 
+  
+  function(x) {
+  return x + 1;
+}
+  -------------------------------> ovo je lambda
+  x => x + 1 (“uzmi x i vrati x + 1”)
+  ternary operator (skraćeni if/else). -> condition ? vrednost_ako_je_true : vrednost_ako_je_false;
+*/
 
   doSignup() {
     if (AuthService.existsByEmail(this.user.email!)) {
